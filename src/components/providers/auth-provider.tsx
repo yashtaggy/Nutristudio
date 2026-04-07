@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import type { User } from 'firebase/auth';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '@/lib/firebase/config';
+import { auth, isFirebaseConfigured } from '@/lib/firebase/config';
 import { getUserProfile } from '@/lib/firebase/firestore';
 import type { AuthContextType, UserProfile } from '@/lib/types';
 
@@ -32,6 +32,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
+    if (!isFirebaseConfigured || !auth) {
+      setLoading(false);
+      setProfileLoading(false);
+      return;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       setUser(firebaseUser);
       setLoading(false);
@@ -40,9 +46,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     return () => unsubscribe();
   }, [fetchProfile]);
-  
+
   const refetchProfile = useCallback(() => {
-      if(user) fetchProfile(user);
+    if (user) fetchProfile(user);
   }, [user, fetchProfile])
 
   const value = { user, profile, loading, profileLoading, refetchProfile };

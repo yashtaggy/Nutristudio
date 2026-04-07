@@ -65,8 +65,7 @@ Ensure that each recommendation includes:
 - Clear nutritional reasoning explaining why it fits the user's criteria and health goal.
 - Provide 2-3 distinct and suitable alternatives, each with its name, estimated cost, and nutritional reasoning.
 
-Your output MUST be a JSON object conforming to the following schema:
-${JSON.stringify(ContextualMealRecommendationOutputSchema.base().jsonSchema(), null, 2)}
+Ensure each alternative includes its name, estimated cost, and reasoning.
 `,
 });
 

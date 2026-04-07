@@ -54,4 +54,22 @@ Meal Details:
 Task:
 Generate a detailed explanation structured into the following sections:
 1.  **explanation**: Explain why this meal was recommended. Cover its nutritional benefits, how it supports the user's health goal, fits within their budget, and is appropriate for the time of day and dietary preference.
-2.  **nutritionalBreakdown**: Provide a concise summary of the meal's key nutritional aspects (e.g., 
+2.  **nutritionalBreakdown**: Provide a concise summary of the meal's key nutritional aspects (e.g., protein, fiber, or vitamins) and how they specifically benefit the user's health goal.
+3.  alignmentDetails: Concisely list the top 3 reasons why this meal is a perfect fit for the user's specific context (goal, budget, and time of day).
+`,
+});
+
+const mealExplanationFlow = ai.defineFlow(
+  {
+    name: 'mealExplanationFlow',
+    inputSchema: ExplainMealInputSchema,
+    outputSchema: ExplainMealOutputSchema,
+  },
+  async (input) => {
+    const { output } = await mealExplanationPrompt(input);
+    if (!output) {
+      throw new Error('Failed to generate meal explanation.');
+    }
+    return output;
+  }
+);

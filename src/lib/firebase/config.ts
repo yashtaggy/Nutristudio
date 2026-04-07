@@ -11,8 +11,22 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-const auth = getAuth(app);
-const db = getFirestore(app);
+const isFirebaseConfigured = !!firebaseConfig.apiKey;
 
-export { app, auth, db };
+let app;
+let auth: any;
+let db: any;
+
+try {
+  if (isFirebaseConfigured) {
+    app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+    auth = getAuth(app);
+    db = getFirestore(app);
+  } else {
+    console.warn('Firebase API key is missing. Authentication features will be disabled.');
+  }
+} catch (error) {
+  console.error('Firebase initialization failed:', error);
+}
+
+export { app, auth, db, isFirebaseConfigured };
