@@ -1,3 +1,46 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "breakfast-1",
+      "description": "A healthy breakfast bowl with oats, fruits, and nuts.",
+      "imageUrl": "https://picsum.photos/seed/bf1/600/400",
+      "imageHint": "breakfast bowl"
+    },
+    {
+      "id": "lunch-1",
+      "description": "A vibrant salad with grilled chicken and fresh vegetables.",
+      "imageUrl": "https://picsum.photos/seed/ln1/600/400",
+      "imageHint": "chicken salad"
+    },
+    {
+      "id": "dinner-1",
+      "description": "A comforting bowl of lentil soup.",
+      "imageUrl": "https://picsum.photos/seed/dn1/600/400",
+      "imageHint": "lentil soup"
+    },
+    {
+      "id": "snack-1",
+      "description": "A handful of mixed nuts and dried fruits.",
+      "imageUrl": "https://picsum.photos/seed/sn1/600/400",
+      "imageHint": "mixed nuts"
+    },
+    {
+      "id": "breakfast-2",
+      "description": "Scrambled eggs with whole wheat toast.",
+      "imageUrl": "https://picsum.photos/seed/bf2/600/400",
+      "imageHint": "scrambled eggs"
+    },
+    {
+      "id": "lunch-2",
+      "description": "A hearty quinoa bowl with roasted vegetables.",
+      "imageUrl": "https://picsum.photos/seed/ln2/600/400",
+      "imageHint": "quinoa bowl"
+    },
+    {
+      "id": "dinner-2",
+      "description": "Grilled fish with steamed asparagus.",
+      "imageUrl": "https://picsum.photos/seed/dn2/600/400",
+      "imageHint": "grilled fish"
+    }
+  ]
 }
