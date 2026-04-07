@@ -4,9 +4,9 @@ import RecommendationEngine from "@/components/dashboard/recommendation-engine";
 export default function DashboardPage() {
   return (
     <>
-      <div className="flex items-center">
-        <h1 className="font-headline text-lg font-semibold md:text-2xl">
-          Dashboard
+      <div className="flex items-center mb-8">
+        <h1 className="text-3xl font-black font-headline text-gradient animate-float">
+          Nutri Dashboard 🌈
         </h1>
       </div>
       <GamificationWidgets />

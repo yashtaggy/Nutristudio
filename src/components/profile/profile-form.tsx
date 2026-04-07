@@ -33,7 +33,7 @@ export default function ProfileForm() {
   const { user, profile, refetchProfile } = useAuth();
   const { toast } = useToast();
   const router = useRouter();
-  
+
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileSchema),
     defaultValues: {
@@ -68,14 +68,18 @@ export default function ProfileForm() {
       });
     }
   }
-  
+
   return (
-    <Card className="w-full max-w-2xl">
-      <CardHeader>
-        <CardTitle>Tell us about yourself</CardTitle>
-        <CardDescription>This helps us create personalized recommendations for you.</CardDescription>
+    <Card className="w-full max-w-2xl card-gamified border-primary/20 shadow-xl overflow-hidden">
+      <CardHeader className="bg-primary/5 border-b-2 border-primary/10">
+        <CardTitle className="text-3xl font-bold font-headline text-primary-foreground bg-primary px-4 py-2 rounded-lg w-fit mb-2">
+          Profile Explorer 🚀
+        </CardTitle>
+        <CardDescription className="text-lg font-medium text-muted-foreground italic">
+          Help us know you better. Don't worry, we won't tell the broccoli your secrets.
+        </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="pt-8">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
@@ -83,9 +87,9 @@ export default function ProfileForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel className="text-lg font-bold">What should we call you, Champion?</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your name" {...field} />
+                    <Input placeholder="Enter your hero name..." {...field} className="h-12 text-lg border-2 focus:ring-primary shadow-sm rounded-xl" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -155,9 +159,8 @@ export default function ProfileForm() {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting && <LoadingSpinner className="mr-2 h-4 w-4" />}
-              Save & Continue
+            <Button type="submit" disabled={isSubmitting} className="w-full button-gamified h-14 text-xl font-black rounded-2xl bg-primary hover:bg-primary/90">
+              {isSubmitting ? <LoadingSpinner className="mr-2 h-6 w-6" /> : "Start My Journey! 🌟"}
             </Button>
           </form>
         </Form>

@@ -41,5 +41,9 @@ export default function ProtectedLayout({
     );
   }
 
-  return <AppLayout>{children}</AppLayout>;
+  return (
+    <div className="wavy-bg min-h-screen">
+      <AppLayout>{children}</AppLayout>
+    </div>
+  );
 }

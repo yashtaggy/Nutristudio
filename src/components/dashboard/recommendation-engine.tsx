@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -86,14 +87,18 @@ export default function RecommendationEngine() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      <Card className="w-full">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 font-headline">
-            <BotMessageSquare className="h-6 w-6 text-primary" />
+    <div className="w-full max-w-4xl mx-auto p-4 md:p-6 wavy-bg rounded-3xl min-h-[500px]">
+      <Card className="w-full card-gamified border-primary/20 backdrop-blur-sm bg-white/80">
+        <CardHeader className="text-center">
+          <div className="mx-auto mb-4 animate-float bg-primary/10 p-4 rounded-full w-fit group-hover:bg-primary/20 transition-colors">
+            <BotMessageSquare className="h-10 w-10 text-primary" />
+          </div>
+          <CardTitle className="text-3xl font-bold font-headline text-gradient tracking-tight">
             Smart Meal Finder
           </CardTitle>
-          <CardDescription>Tell us what you're feeling, and we'll find the perfect meal for you.</CardDescription>
+          <CardDescription className="text-lg font-medium text-muted-foreground/80 italic mt-2">
+            "I'm so hungry I could eat a digital apple!" 🍎
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -168,9 +173,9 @@ export default function RecommendationEngine() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" disabled={isLoading} className="w-full md:w-auto">
-                {isLoading ? <LoadingSpinner className="mr-2" /> : <Sparkles className="mr-2 h-4 w-4" />}
-                Nudge Me!
+              <Button type="submit" disabled={isLoading} className="w-full md:w-auto button-gamified text-lg h-12 px-8 font-bold">
+                {isLoading ? <LoadingSpinner className="mr-2" /> : <Sparkles className="mr-2 h-5 w-5" />}
+                Nudge Me! 🚀
               </Button>
             </form>
           </Form>
@@ -190,15 +195,15 @@ export default function RecommendationEngine() {
 
       {recommendation && (
         <div className="mt-8">
-            <h2 className="text-2xl font-headline mb-4">Your Top Recommendation</h2>
-            <RecommendationCard isPrimary meal={recommendation} />
-            
-            <h3 className="text-xl font-headline mt-8 mb-4">Alternatives</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {recommendation.alternatives.map((alt, index) => (
-                    <RecommendationCard key={index} meal={alt} />
-                ))}
-            </div>
+          <h2 className="text-2xl font-headline mb-4">Your Top Recommendation</h2>
+          <RecommendationCard isPrimary meal={recommendation} />
+
+          <h3 className="text-xl font-headline mt-8 mb-4">Alternatives</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {recommendation.alternatives.map((alt, index) => (
+              <RecommendationCard key={index} meal={alt} />
+            ))}
+          </div>
         </div>
       )}
     </div>
